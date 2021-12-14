@@ -1,0 +1,59 @@
+// @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.chart-wrapper {
+    @apply p-3 w-full;
+
+    .chart-content {
+        @apply p-6 rounded-md;
+    
+        .page-bar {
+            @apply flex justify-between mb-3;
+
+            .title {
+                h1{
+                    @apply font-bold text-xl;
+                }
+            }
+        }
+    }
+}
+
+.chart-builder {
+    *,
+    ::before,
+    ::after {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+        border-color: currentColor;
+    }
+
+    @apply flex flex-row w-full;
+
+    .chart-container {
+        @apply flex-1 p-6;
+    }
+    .builder-settings {
+        @apply flex flex-col overflow-y-auto;
+        @apply border-l border-gray-300 p-4;
+        min-width: 320px;
+        
+        .settings-header {
+            @apply text-base font-bold m-0 mb-2;
+        }
+
+        .setting-items {
+            @apply flex flex-col gap-4;
+
+            .setting-controls {
+                @apply flex flex-col gap-2;
+
+                .controls-label {
+                    @apply text-sm font-normal;
+                }
+            }
+        }
+    }
+}
