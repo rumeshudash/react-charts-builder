@@ -35,6 +35,7 @@ const ChartBuilder: React.FC<CHART_BUILDER_PROPS> = ({
                     )
                     break;
                 case 'line':
+                case 'area':
                 case 'bar':
                 case 'column':
                     newChartData.data = getLineChartData(

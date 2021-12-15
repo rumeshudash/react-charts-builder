@@ -31,7 +31,7 @@ const ChartArea: React.FC<ChartAreaProps> = ({ data, showCartesianGrid = true })
                 <XAxis dataKey='label' />
                 <YAxis />
                 <Tooltip />
-                <Legend />
+                {/* <Legend /> */}
                 {Object.keys(data[0]).map((key, index) => {
                     if (key !== 'label') {
                         return (

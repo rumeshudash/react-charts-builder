@@ -30,7 +30,7 @@
         border-color: currentColor;
     }
 
-    @apply flex flex-row w-full;
+    @apply flex flex-row w-full max-h-screen;
 
     .chart-container {
         @apply flex-1 p-6;

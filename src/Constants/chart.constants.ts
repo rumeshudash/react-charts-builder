@@ -85,7 +85,7 @@ export const ChartCategories = [
     },
     {
         name: 'Column',
-        charts: ['column', 'stackedColumn'],
+        charts: ['column'],
     },
     {
         name: 'Area',

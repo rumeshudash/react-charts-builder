@@ -27,7 +27,6 @@ const BuilderSettings = ({ data, settings, onSettingChange }: any) => {
 
     useEffect(() => {
         setCurrentSettings(getChartSettings())
-        console.log(currentChart, settings, getChartSettings())
     }, [currentChart])
 
     useEffect(() => {
@@ -60,6 +59,7 @@ const BuilderSettings = ({ data, settings, onSettingChange }: any) => {
             case 'donut':
                 return pieChartSettings
             case 'line':
+            case 'area':
             case 'bar':
                 return lineChartSettings
             case 'column':
@@ -95,7 +95,6 @@ const BuilderSettings = ({ data, settings, onSettingChange }: any) => {
             settings[input.key] = defaultVal || null
         })
 
-        console.log( 'settings:', settings )
         return settings
     }
 
@@ -153,8 +152,6 @@ const BuilderSettings = ({ data, settings, onSettingChange }: any) => {
                     </div>
                 )
             
-            case 'radio':
-
             default:
                 return null
         }
