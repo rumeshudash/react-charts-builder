@@ -83,6 +83,47 @@ export const lineChartSettings = [
     },
 ]
 
+export const columnChartSettings = [
+    {
+        name: 'Y Axis',
+        type: 'collapse',
+        settings: [
+            {
+                key: 'label',
+                type: 'select',
+                valueType: 'string',
+                defaultValue: (data: any[]) => {
+                    const keys = getStringKeysFromData(data)
+                    return keys[0] || null
+                },
+                isClearable: false,
+            },
+        ],
+    },
+    {
+        name: 'X Axis',
+        type: 'collapse',
+        settings: [
+            {
+                key: 'value',
+                type: 'select',
+                label: 'Chart Value',
+                valueType: 'number',
+                defaultValue: (data: any[]) => {
+                    const keys = getNumberKeysFromData(data)
+                    return keys[0] || null
+                },
+                isClearable: true,
+            },
+            {
+                key: 'aggregate',
+                label: 'Calculation Function',
+                type: 'radio',
+            },
+        ],
+    },
+]
+
 export const getStringKeysFromData = (data: any[]) => {
     if (IsArray(data)) {
         return Object.keys(data[0]).filter((item) => typeof data[0][item] === 'string')

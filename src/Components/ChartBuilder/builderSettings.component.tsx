@@ -15,7 +15,8 @@ import {
     getNumberKeysFromData,
     getStringKeysFromData,
     pieChartSettings,
-    lineChartSettings
+    lineChartSettings,
+    columnChartSettings
 } from './../../Utils/chartHelper.utils'
 
 const BuilderSettings = ({ data, settings, onSettingChange }: any) => {
@@ -61,6 +62,8 @@ const BuilderSettings = ({ data, settings, onSettingChange }: any) => {
             case 'line':
             case 'bar':
                 return lineChartSettings
+            case 'column':
+                return columnChartSettings
             default:
                 return []
         }

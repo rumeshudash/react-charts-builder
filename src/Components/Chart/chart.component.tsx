@@ -7,6 +7,7 @@ import ChartArea from './chartArea.component'
 import ChartComposed from './chartComposed.component'
 import { IsArray } from '../../Utils/common.utils'
 import ChartDonut from './chartDonut.component'
+import ChartColumn from './chartColumn.component'
 
 interface CHART_PROPS {
     data: CHART_DATA
@@ -48,6 +49,8 @@ const Chart: React.FC<CHART_PROPS> = (props) => {
                 return <ChartDonut data={data} />
             case 'bar':
                 return <ChartBar data={data} />
+            case 'column':
+                return <ChartColumn data={data} />
             case 'bar_stacked':
                 return <ChartBar data={data} stacked />
             case 'line':

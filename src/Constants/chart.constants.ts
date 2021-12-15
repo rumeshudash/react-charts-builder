@@ -69,7 +69,7 @@ export const ChartItems = [
 export const ChartCategories = [
     {
         name: 'Most popular',
-        charts: ['pie', 'bar', 'line', 'stackedBar', 'area'],
+        charts: ['pie', 'bar', 'line', 'area'],
     },
     {
         name: 'Pie',
@@ -81,7 +81,7 @@ export const ChartCategories = [
     },
     {
         name: 'Bar',
-        charts: ['bar', 'stackedBar'],
+        charts: ['bar'],
     },
     {
         name: 'Column',
