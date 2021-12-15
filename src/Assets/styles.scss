@@ -63,6 +63,13 @@
                 }
             }
 
+            .collapse {
+                .controls {
+                    max-height: 40vh;
+                    min-height: 200px;
+                    overflow-y: auto
+                }
+            }
             .setting-controls {
                 @apply flex flex-col gap-2;
 
