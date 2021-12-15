@@ -1,5 +1,5 @@
 export interface CHART_DATA {
-    type: 'pie' | 'area' | 'bar' | 'bar_stacked' | 'line' | 'composed';
+    type: 'pie' | 'donut' | 'area' | 'bar' | 'bar_stacked' | 'line' | 'composed';
     name?: string;
     description?: string;
     data: CHART_DATA_TYPES[];

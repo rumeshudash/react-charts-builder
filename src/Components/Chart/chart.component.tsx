@@ -5,6 +5,8 @@ import ChartLine from './chartLine.component'
 import ChartPie from './chartPie.component'
 import ChartArea from './chartArea.component'
 import ChartComposed from './chartComposed.component'
+import { IsArray } from '../../Utils/common.utils'
+import ChartDonut from './chartDonut.component'
 
 interface CHART_PROPS {
     data: CHART_DATA
@@ -42,6 +44,8 @@ const Chart: React.FC<CHART_PROPS> = (props) => {
         switch (type) {
             case 'pie':
                 return <ChartPie data={data} data2={data2} />
+            case 'donut':
+                return <ChartDonut data={data} />
             case 'bar':
                 return <ChartBar data={data} />
             case 'bar_stacked':
@@ -59,12 +63,14 @@ const Chart: React.FC<CHART_PROPS> = (props) => {
 
     return (
         <div className={`chart-container ${className ?? ''}`}>
-            {getChartComponent({
-                type: data.type,
-                data: data.data,
-                data2: data.data2,
-                def: data.def,
-            })}
+            {IsArray(data.data) &&
+                data.data.length > 0 &&
+                getChartComponent({
+                    type: data.type,
+                    data: data.data,
+                    data2: data.data2,
+                    def: data.def,
+                })}
         </div>
     )
 }

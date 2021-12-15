@@ -55,13 +55,17 @@ const App = () => {
         value: 'sales',
         aggregate: null,
     }
-    
-    const handleSettingsChange = (settings: any) => {
-        console.log(settings)
-    }
+
+    // const handleSettingsChange = (settings: any) => {
+    //     console.log(settings)
+    // }
     return (
         <div style={{ margin: '10px auto', width: '80vw', border: '1px solid #ccc' }}>
-            <ChartBuilder data={demoChartData} settingData={testSettings} onSettingChange={handleSettingsChange} />
+            <ChartBuilder
+                data={demoChartData}
+                settingData={testSettings}
+                // onSettingChange={handleSettingsChange}
+            />
         </div>
     )
 }

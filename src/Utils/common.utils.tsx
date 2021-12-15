@@ -31,3 +31,15 @@ export const isFunction = ( item: any ) => {
 export const hasObjectKey = ( object: any, key: string ) => {
     return typeof object === 'object' && object.hasOwnProperty(key);
 }
+
+export const getObjectFromArray = ( array: any[], key: string, value: any ) => {
+    return array.find( object => object[key] === value );
+}
+
+export const mergeLeftObjects = ( obj1: object, obj2: object ): object => {
+    let newObj = {};
+    for( let key in obj1 ) {
+        newObj[key] = typeof obj2[key] === 'undefined' ? obj1[key] : obj2[key];
+    }
+    return newObj;
+}

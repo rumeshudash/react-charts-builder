@@ -17,16 +17,17 @@ const ChartBuilder: React.FC<CHART_BUILDER_PROPS> = ({
 }) => {
     const [chartData, setChartData] = useState<CHART_DATA>({ type: 'pie', data: [] })
     const [chartSettings, setChartSettings] = useState(settingData || {})
-
     useEffect(() => {
-        if (Object.keys(chartSettings).length > 1) {
-            let newChartData: CHART_DATA = {
-                type: chartSettings.chart,
-                data: [],
-            }
 
+        let newChartData: CHART_DATA = {
+            type: chartSettings.chart,
+            data: [],
+        }
+
+        if (Object.keys(chartSettings).length > 1) {
             switch (chartSettings.chart) {
                 case 'pie':
+                case 'donut':
                     newChartData.data = getPieChartData(
                         data,
                         chartSettings.label,
@@ -34,9 +35,9 @@ const ChartBuilder: React.FC<CHART_BUILDER_PROPS> = ({
                     )
                     break
             }
-
-            setChartData(newChartData)
         }
+
+        setChartData(newChartData)
     }, [chartSettings])
 
     const handleSettingChange = (settings: any) => {
@@ -46,7 +47,7 @@ const ChartBuilder: React.FC<CHART_BUILDER_PROPS> = ({
 
     return (
         <div className='chart-builder'>
-            <Chart key={JSON.stringify(chartSettings)} data={chartData} />
+            <Chart data={chartData} />
             <BuilderSettings
                 data={data}
                 settings={chartSettings}

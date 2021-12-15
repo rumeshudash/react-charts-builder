@@ -1,6 +1,14 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import Select from 'react-select'
-import { getOptionFromValue, isEmptyObject, isFunction, toSelectOptions } from '../../Utils/common.utils'
+import { ChartCategories, ChartItems } from '../../Constants/chart.constants'
+import {
+    getObjectFromArray,
+    getOptionFromValue,
+    isEmptyObject,
+    isFunction,
+    mergeLeftObjects,
+    toSelectOptions,
+} from '../../Utils/common.utils'
 import Collapse from '../Collapse/collapse.component'
 import {
     getInputSettingsOnly,
@@ -17,16 +25,22 @@ const BuilderSettings = ({ data, settings, onSettingChange }: any) => {
 
     useEffect(() => {
         setCurrentSettings(getChartSettings())
+        console.log(currentChart, settings, getChartSettings())
     }, [currentChart])
 
     useEffect(() => {
-        setSettingsData({ ...getDefaultSettings(), ...(settings ?? {}) })
-        // setSettingsData(getDefaultSettings())
-    }, [currentSettings])
+        let newSettings: object = getDefaultSettings()
+        if (settings) {
+            let prevSettings = { ...settings }
+            delete prevSettings.chart
+            newSettings = mergeLeftObjects(newSettings, prevSettings);
+        }
+        setSettingsData(newSettings);
+    }, [currentSettings, currentChart])
 
     useEffect(() => {
-        if( isFunction(onSettingChange) ) {
-            onSettingChange(settingsData);
+        if (isFunction(onSettingChange)) {
+            onSettingChange(settingsData)
         }
     }, [settingsData])
 
@@ -41,6 +55,7 @@ const BuilderSettings = ({ data, settings, onSettingChange }: any) => {
     const getChartSettings = () => {
         switch (currentChart) {
             case 'pie':
+            case 'donut':
                 return pieChartSettings
             default:
                 return []
@@ -73,6 +88,7 @@ const BuilderSettings = ({ data, settings, onSettingChange }: any) => {
             settings[input.key] = defaultVal || null
         })
 
+        console.log( 'settings:', settings )
         return settings
     }
 
@@ -129,12 +145,24 @@ const BuilderSettings = ({ data, settings, onSettingChange }: any) => {
                         />
                     </div>
                 )
+            
+            case 'radio':
+
             default:
                 return null
         }
     }
 
-    console.log('Setting Data: ', settingsData)
+    const getChartItemsElement = (charts: any[]) => {
+        return charts.map((chart, index) => {
+            const chartObj = getObjectFromArray(ChartItems, 'key', chart)
+            return (
+                <div key={index + chart} className='chart-item' onClick={() => setCurrentChart(chart)}>
+                    {chartObj.name}
+                </div>
+            )
+        })
+    }
 
     return (
         <div className='builder-settings'>
@@ -145,7 +173,14 @@ const BuilderSettings = ({ data, settings, onSettingChange }: any) => {
                     collapse={activeCollapse !== 'chartType'}
                     onChange={(collapsed) => handleActiveCollapse(collapsed, 'chartType')}
                 >
-                    charts
+                    {ChartCategories.map((chartCat, index) => (
+                        <div key={chartCat.name + index} className='chart-category'>
+                            <div className='category-title'>{chartCat.name}</div>
+                            <div className='chart-list'>
+                                {getChartItemsElement(chartCat.charts)}
+                            </div>
+                        </div>
+                    ))}
                 </Collapse>
 
                 {currentSettings.map((setting, index) => (

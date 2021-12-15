@@ -38,7 +38,7 @@
     .builder-settings {
         @apply flex flex-col overflow-y-auto;
         @apply border-l border-gray-300 p-4;
-        min-width: 320px;
+        width: 350px;
         
         .settings-header {
             @apply text-base font-bold m-0 mb-2;
@@ -46,6 +46,22 @@
 
         .setting-items {
             @apply flex flex-col gap-4;
+
+            .chart-category {
+                @apply mb-4;
+
+                .category-title {
+                    @apply text-sm font-normal mb-2;
+                }
+
+                .chart-list {
+                    @apply flex flex-row gap-2 flex-wrap;
+
+                    .chart-item {
+                        @apply py-1 px-2 border border-gray-200 rounded-md cursor-pointer hover:bg-gray-200;
+                    }
+                }
+            }
 
             .setting-controls {
                 @apply flex flex-col gap-2;
