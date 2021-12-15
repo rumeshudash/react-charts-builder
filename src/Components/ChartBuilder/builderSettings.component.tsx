@@ -59,6 +59,7 @@ const BuilderSettings = ({ data, settings, onSettingChange }: any) => {
             case 'donut':
                 return pieChartSettings
             case 'line':
+            case 'bar':
                 return lineChartSettings
             default:
                 return []
