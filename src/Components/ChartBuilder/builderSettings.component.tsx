@@ -15,6 +15,7 @@ import {
     getNumberKeysFromData,
     getStringKeysFromData,
     pieChartSettings,
+    lineChartSettings
 } from './../../Utils/chartHelper.utils'
 
 const BuilderSettings = ({ data, settings, onSettingChange }: any) => {
@@ -57,6 +58,8 @@ const BuilderSettings = ({ data, settings, onSettingChange }: any) => {
             case 'pie':
             case 'donut':
                 return pieChartSettings
+            case 'line':
+                return lineChartSettings
             default:
                 return []
         }

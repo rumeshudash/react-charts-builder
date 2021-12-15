@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { CHART_DATA } from '../../Dtos/chart'
-import { getPieChartData } from '../../Utils/chartHelper.utils'
+import { getPieChartData, getLineChartData } from '../../Utils/chartHelper.utils'
 import Chart from '../Chart/chart.component'
 import BuilderSettings from './builderSettings.component'
 
@@ -29,6 +29,13 @@ const ChartBuilder: React.FC<CHART_BUILDER_PROPS> = ({
                 case 'pie':
                 case 'donut':
                     newChartData.data = getPieChartData(
+                        data,
+                        chartSettings.label,
+                        chartSettings.value
+                    )
+                    break;
+                case 'line':
+                    newChartData.data = getLineChartData(
                         data,
                         chartSettings.label,
                         chartSettings.value
