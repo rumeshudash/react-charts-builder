@@ -19,8 +19,22 @@ import MyComponent from 'react-charts-builder'
 import 'react-charts-builder/dist/index.css'
 
 class Example extends Component {
+  const demoChartData = [
+    {
+        name: 'Sun',
+        date: '1 Dec',
+        sales: 2400,
+        profit: 400,
+    },
+    ...
+  ]
+  
   render() {
-    return <MyComponent />
+    return (
+      <ChartBuilder
+          data={demoChartData}
+      />
+    )
   }
 }
 ```
