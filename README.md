@@ -15,7 +15,7 @@ npm install --save react-charts-builder
 ```tsx
 import React, { Component } from 'react'
 
-import MyComponent from 'react-charts-builder'
+import { ChartBuilder } from 'react-charts-builder'
 import 'react-charts-builder/dist/index.css'
 
 class Example extends Component {
@@ -28,7 +28,7 @@ class Example extends Component {
     },
     ...
   ]
-  
+
   render() {
     return (
       <ChartBuilder
