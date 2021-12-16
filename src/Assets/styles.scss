@@ -30,15 +30,16 @@
         border-color: currentColor;
     }
 
-    @apply flex flex-row w-full max-h-screen;
+    @apply flex flex-col md:flex-row w-full md:max-h-screen;
 
     .chart-container {
-        @apply flex-1 p-6;
+        @apply flex-1 p-2 md:p-6;
     }
     .builder-settings {
         @apply flex flex-col overflow-y-auto;
         @apply border-l border-gray-300 p-4;
-        width: 350px;
+        @apply md:w-[320px];
+        // width: 320px;
         
         .settings-header {
             @apply text-base font-bold m-0 mb-2;

@@ -50,7 +50,7 @@ const App = () => {
     ]
 
     const testSettings = {
-        chart: 'pie',
+        chart: 'bar',
         label: 'date',
         value: 'sales',
         aggregate: null,
