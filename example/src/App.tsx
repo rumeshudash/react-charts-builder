@@ -1,9 +1,12 @@
-import React from 'react'
-
+import React, { useState } from 'react'
 import { ChartBuilder } from 'react-charts-builder'
 import 'react-charts-builder/dist/index.css'
+import JSONPretty from 'react-json-pretty'
+import 'react-json-pretty/themes/monikai.css'
+
 
 const App = () => {
+    const [settings, setSettings] = useState({})
     const demoChartData = [
         {
             name: 'Sun',
@@ -56,16 +59,18 @@ const App = () => {
         aggregate: null,
     }
 
-    // const handleSettingsChange = (settings: any) => {
-    //     console.log(settings)
-    // }
     return (
-        <div style={{ margin: '10px auto', width: '80vw', border: '1px solid #ccc' }}>
-            <ChartBuilder
-                data={demoChartData}
-                settingData={testSettings}
-                // onSettingChange={handleSettingsChange}
-            />
+        <div>
+            <div style={{ margin: '10px auto', width: '80vw', border: '1px solid #ccc' }}>
+                <ChartBuilder
+                    data={demoChartData}
+                    settingData={testSettings}
+                    onSettingChange={setSettings}
+                />
+            </div>
+            <div style={{ margin: '10px auto', width: '80vw'}}>
+                <JSONPretty id='json-pretty' data={settings}></JSONPretty>
+            </div>
         </div>
     )
 }

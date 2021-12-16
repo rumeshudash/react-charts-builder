@@ -34,7 +34,12 @@
 
     .chart-container {
         @apply flex-1 p-2 md:p-6;
+
+        .recharts-responsive-container {
+            @apply flex items-center;
+        }
     }
+
     .builder-settings {
         @apply flex flex-col overflow-y-auto;
         @apply border-l border-gray-300 p-4;

@@ -66,6 +66,7 @@
   ],
   "dependencies": {
     "react-animate-height": "^2.0.23",
+    "react-responsive": "^9.0.0-beta.5",
     "react-select": "^5.2.1",
     "recharts": "^2.1.6"
   }
